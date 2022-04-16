@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -19,7 +20,7 @@ class Todo(db.Model):
         return '<Task %r>' %self.id 
 
 
-@app.route('/') # main route
+@app.route('/', methods=['POST', 'GET']) # main route
 def index():
     return render_template('index.html')
 
